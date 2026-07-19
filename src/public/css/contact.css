@@ -69,3 +69,85 @@ label {
     font-size: 14px;
     margin-top: 5px;
 }
+
+.confirm-table {
+    width: 70%;
+    margin: 40px auto;
+    border-collapse: collapse;
+}
+
+.confirm-table th {
+    width: 30%;
+    padding: 20px;
+    background-color: #BAA899;
+    color: #fff;
+    text-align: left;
+    font-weight: normal;
+    border: 1px solid #E0DFDE;
+}
+
+.confirm-table td {
+    padding: 20px;
+    background-color: #fff;
+    color: #8B7969;
+    border: 1px solid #E0DFDE;
+}
+
+.confirm-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin: 40px auto 0;
+}
+
+.correct-button {
+    background: transparent;
+    border: none;
+    color: #8B7969;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-button {
+    width: 120px;
+    height: 42px;
+    background: #82756A;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.thanks-main {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.thanks-main::before {
+    content: "Thank you";
+    position: absolute;
+    color: rgba(139, 121, 105, 0.05);
+    font-size: 200px;
+    font-weight: bold;
+    z-index: -1;
+}
+
+.thanks-message {
+    color: #8B7969;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.home-button {
+    padding: 10px 40px;
+    background-color: #82756A;
+    color: #fff;
+    text-decoration: none;
+}

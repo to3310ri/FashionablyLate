@@ -1,0 +1,646 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: #333;
+    background: #f8f8f8;
+    font-family:
+        Arial,
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+.header {
+    height: 64px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.header__logo {
+    color: #f5c400;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.main {
+    width: 100%;
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 56px 40px 80px;
+}
+
+/* 共通メッセージ */
+
+.success-message {
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    color: #276738;
+    background: #eaf7ed;
+    border: 1px solid #b8dfc1;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-error {
+    margin: 7px 0 0;
+    color: #e53e3e;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.required-label {
+    margin-left: 8px;
+    padding: 2px 5px;
+    color: #fff;
+    background: #e53e3e;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+.selection-note {
+    margin-left: 8px;
+    color: #e53e3e;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.form-group__input--error {
+    border-color: #e53e3e;
+}
+
+.form-group__input--error:focus {
+    border-color: #e53e3e;
+    box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.1);
+}
+
+/* 商品一覧 */
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-heading__title {
+    margin: 0;
+    font-size: 30px;
+}
+
+.page-heading__add {
+    padding: 14px 22px;
+    color: #333;
+    background: #ffa928;
+    border-radius: 5px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.products-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+}
+
+.sidebar,
+.products {
+    min-width: 0;
+}
+
+.search-form__input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 24px;
+    font-size: 15px;
+    outline: none;
+}
+
+.search-form__input:focus {
+    border-color: #f6c500;
+}
+
+.search-form__button {
+    width: 100%;
+    height: 46px;
+    margin-top: 16px;
+    color: #333;
+    background: #f6c500;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-form__button:hover {
+    background: #e9bb00;
+}
+
+.sort-area {
+    margin-top: 34px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #ddd;
+}
+
+.sort-area__title {
+    margin: 0 0 16px;
+    font-size: 20px;
+}
+
+.sort-area__select {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    color: #888;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 15px;
+    outline: none;
+}
+
+.sort-area__select:focus {
+    border-color: #f6c500;
+}
+
+.sort-tag {
+    width: fit-content;
+    margin-top: 14px;
+    padding: 7px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    background: #fff;
+    border: 1px solid #f6c500;
+    border-radius: 18px;
+    font-size: 13px;
+}
+
+.sort-tag__remove {
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #f6c500;
+    border: 1px solid #f6c500;
+    border-radius: 50%;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.product-card {
+    overflow: hidden;
+    display: block;
+    color: #333;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    text-decoration: none;
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.16);
+}
+
+.product-card__image {
+    width: 100%;
+    height: 250px;
+    display: block;
+    object-fit: cover;
+}
+
+.product-card__body {
+    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.product-card__name,
+.product-card__price {
+    margin: 0;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.product-card__price {
+    white-space: nowrap;
+}
+
+.products__empty {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* ページネーション */
+
+.pagination {
+    margin-top: 34px;
+}
+
+.pagination svg {
+    width: 18px;
+    height: 18px;
+}
+
+.pagination nav > div:first-child {
+    display: none;
+}
+
+.pagination nav > div:last-child {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination nav > div:last-child > div:first-child {
+    display: none;
+}
+
+.pagination nav > div:last-child > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pagination a,
+.pagination span {
+    min-width: 34px;
+    height: 34px;
+    padding: 0 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #555;
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.pagination span[aria-current="page"] span {
+    color: #fff;
+    background: #f6c500;
+}
+
+/* 商品詳細・商品登録 */
+
+.detail-page {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.register-title {
+    margin: 0 0 26px;
+    font-size: 30px;
+}
+
+.detail-form__top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.detail-form__image-area,
+.detail-form__information {
+    min-width: 0;
+}
+
+.detail-form__image {
+    width: 100%;
+    height: 330px;
+    display: block;
+    object-fit: cover;
+    background: #fff;
+}
+
+.detail-form__file {
+    min-height: 42px;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.file-button {
+    min-width: 138px;
+    height: 38px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    background: #efefef;
+    border: 1px solid #9c9c9c;
+    border-radius: 3px;
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        border-color 0.2s;
+}
+
+.file-button:hover {
+    background: #e3e3e3;
+    border-color: #777;
+}
+
+.file-button:active {
+    background: #d8d8d8;
+}
+
+.detail-form__filename {
+    overflow: hidden;
+    color: #555;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.form-group {
+    margin-bottom: 26px;
+}
+
+.form-group__label {
+    margin-bottom: 8px;
+    display: block;
+    font-size: 15px;
+}
+
+.form-group__input,
+.form-group__textarea {
+    width: 100%;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+}
+
+.form-group__input {
+    height: 44px;
+}
+
+.form-group__textarea {
+    min-height: 150px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.form-group__input:focus,
+.form-group__textarea:focus {
+    border-color: #f6c500;
+}
+
+.form-group__input--error,
+.form-group__textarea.form-group__input--error {
+    border-color: #e53e3e;
+}
+
+.season-list {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.season-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.season-item__input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.season-item__circle {
+    width: 21px;
+    height: 21px;
+    position: relative;
+    flex-shrink: 0;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #777;
+    border-radius: 50%;
+}
+
+.season-item__input:checked + .season-item__circle {
+    background: #555;
+    border-color: #555;
+}
+
+.season-item__input:checked + .season-item__circle::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    transform: translate(-50%, -53%);
+}
+
+.season-item__input:focus-visible + .season-item__circle {
+    outline: 2px solid #f6c500;
+    outline-offset: 2px;
+}
+
+.season-item__name {
+    font-size: 15px;
+}
+
+.detail-form__description {
+    margin-top: 28px;
+}
+
+.detail-form__actions {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: 180px 180px 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+}
+
+.register-actions {
+    grid-template-columns: 180px 180px;
+}
+
+.button {
+    height: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.12);
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button--back {
+    color: #333;
+    background: #ddd;
+}
+
+.button--back:hover {
+    background: #d2d2d2;
+}
+
+.button--save {
+    color: #333;
+    background: #f6c500;
+}
+
+.button--save:hover {
+    background: #e9bb00;
+}
+
+.button--delete {
+    width: 48px;
+    padding: 0;
+    color: #ef3b35;
+    background: transparent;
+    box-shadow: none;
+}
+
+.button--delete:hover {
+    background: #ffeceb;
+}
+
+.delete-icon {
+    width: 26px;
+    height: 26px;
+    display: block;
+    fill: currentColor;
+}
+
+/* レスポンシブ */
+
+@media screen and (max-width: 900px) {
+    .products-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .detail-form__top {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+        padding: 0 20px;
+    }
+
+    .main {
+        padding: 32px 20px 60px;
+    }
+
+    .page-heading {
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .page-heading__add {
+        padding: 12px 16px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-form__image {
+        height: 280px;
+    }
+
+    .detail-form__file {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .detail-form__actions,
+    .register-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .button--delete {
+        justify-self: center;
+    }
+}
